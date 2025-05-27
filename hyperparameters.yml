@@ -1,0 +1,74 @@
+cartpole1:
+  env_id: CartPole-v1
+  replay_memory_size: 100000
+  mini_batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 100
+  learning_rate_a: 0.001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 128
+  enable_double_dqn: False
+  enable_dueling_dqn: True
+flappybird1:
+  env_id: FlappyBird-v0
+  replay_memory_size: 100000
+  mini_batch_size: 32
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.05
+  network_sync_rate: 10
+  learning_rate_a: 0.0001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+robust_flappybird:
+  env_id: FlappyBird-v0
+  replay_memory_size: 50000
+  mini_batch_size: 32
+  epsilon_init: 1.0
+  epsilon_decay: 0.9995
+  epsilon_min: 0.05
+  network_sync_rate: 100
+  learning_rate_a: 0.0001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 256
+  env_make_params:
+    use_lidar: False
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+  # Robust learning specific parameters
+  belief_update_rate: 0.001
+  simulation_steps: 5
+  belief_confidence: 0.8
+
+monte_carlo_flappybird:
+  env_id: FlappyBird-v0
+  replay_memory_size: 50000
+  mini_batch_size: 32
+  epsilon_init: 1.0
+  epsilon_decay: 0.9995
+  epsilon_min: 0.05
+  network_sync_rate: 100
+  learning_rate_a: 0.0001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 256
+  env_make_params:
+    use_lidar: False
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+  # Monte Carlo specific parameters
+  use_monte_carlo: True
+  mc_simulations: 20          # Number of Monte Carlo rollouts per action
+  mc_depth: 5                 # Depth of each rollout
+  mc_frequency: 1             # Use MC every N steps (1 = every step)
+  env_model_lr: 0.001         # Learning rate for environment model
